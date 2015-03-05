@@ -11,7 +11,7 @@ import com.hind.elibrary.service.BookService;
 
 @RestController
 @RequestMapping("/rest")
-public class RestControler {
+public class WsRestController {
 
 	@Autowired
 	private BookService bookService;

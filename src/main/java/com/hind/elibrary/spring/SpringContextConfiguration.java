@@ -8,7 +8,7 @@ import com.hind.elibrary.dao.BookDao;
 import com.hind.elibrary.dao.SimpleBookDaoImpl;
 import com.hind.elibrary.service.BookService;
 import com.hind.elibrary.service.BookServiceImpl;
-import com.hind.elibrary.webservice.rest.RestControler;
+import com.hind.elibrary.webservice.rest.WsRestController;
 
 @Configuration
 @EnableWebMvc
@@ -27,7 +27,7 @@ public class SpringContextConfiguration {
 	}
 
 	@Bean
-	public RestControler getRestControler() {
-		return new RestControler();
+	public WsRestController getRestControler() {
+		return new WsRestController();
 	}
 }
