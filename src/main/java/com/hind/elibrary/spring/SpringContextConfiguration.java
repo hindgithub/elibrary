@@ -27,7 +27,7 @@ public class SpringContextConfiguration {
 	}
 
 	@Bean
-	public WsRestController getRestControler() {
+	public WsRestController getWsRestControler() {
 		return new WsRestController();
 	}
 }
