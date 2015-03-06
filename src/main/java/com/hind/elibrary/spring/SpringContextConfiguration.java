@@ -14,7 +14,7 @@ import com.hind.elibrary.webservice.soap.WsSoapController;
 
 @Configuration
 @EnableWebMvc
-@ImportResource("classpath:/com/hind/elibrary/webservice/soap/ws-soap-context.xml")
+@ImportResource("classpath:/com/hind/elibrary/spring/spring-context-configuration.xml")
 public class SpringContextConfiguration {
 
 	@Bean
