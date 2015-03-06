@@ -16,7 +16,7 @@ public class BookServiceImplTest {
 	private static String AUTHOR = "Author";
 	private static String TITLE = "Title";
 
-	private BookDao bookDao;
+	private BookDao bookDaoMock;
 	private BookServiceImpl bookService;
 	private Collection<Book> books;
 	private Book b1;
@@ -30,11 +30,11 @@ public class BookServiceImplTest {
 		books = new LinkedList<Book>();
 		books.add(b1);
 
-		bookDao = Mockito.mock(BookDao.class);
-		Mockito.when(bookDao.getAll()).thenReturn(books);
+		bookDaoMock = Mockito.mock(BookDao.class);
+		Mockito.when(bookDaoMock.getAll()).thenReturn(books);
 
 		bookService = new BookServiceImpl();
-		bookService.setBookDao(bookDao);
+		bookService.setBookDao(bookDaoMock);
 
 	}
 
@@ -46,7 +46,7 @@ public class BookServiceImplTest {
 		Collection<Book> resultBooks = bookService.getAllBooks();
 
 		//then
-		Mockito.verify(bookDao, Mockito.times(1)).getAll();
+		Mockito.verify(bookDaoMock, Mockito.times(1)).getAll();
 		Assert.assertEquals(1, resultBooks.size());
 		Book resultBook = (Book) resultBooks.toArray()[0];
 		Assert.assertEquals(AUTHOR, resultBook.getAuthor());

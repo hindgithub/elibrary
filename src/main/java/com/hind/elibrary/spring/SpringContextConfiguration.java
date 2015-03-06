@@ -28,6 +28,8 @@ public class SpringContextConfiguration {
 
 	@Bean
 	public WsRestController getWsRestControler() {
-		return new WsRestController();
+		WsRestController wsRestController = new WsRestController();
+		wsRestController.setBookService(getBookService());
+		return wsRestController;
 	}
 }
