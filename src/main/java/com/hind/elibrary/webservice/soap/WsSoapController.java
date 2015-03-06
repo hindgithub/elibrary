@@ -14,7 +14,7 @@ public class WsSoapController {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "BookRequest")
 	public void handleBookRequest() {
-
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 
 	public BookService getBookService() {

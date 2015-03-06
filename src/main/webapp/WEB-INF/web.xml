@@ -38,11 +38,17 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>org.springframework.web.context.ContextLoaderListener</param-value>
 		</init-param>
+		<init-param>
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
+
+
 
 </web-app>
