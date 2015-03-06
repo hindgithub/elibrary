@@ -1,7 +1,17 @@
-<html>
+<!doctype html>
+<html lang="pl" ng-app = "elibraryApp">
 <head>
+<meta charset="utf-8">
+<title>eLibrary</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src="js/controllers.js"></script>
 </head>
-<body>
-<h3>Tu coś będzie !!</h3>	
+<body ng-controller="BooksListCtrl">
+	<table>
+		<tr ng-repeat = "book in books">
+			<td>{{book.title}}</td><td>{{book.author}}</td>
+		</tr>
+	</table>
 </body>
 </html>
