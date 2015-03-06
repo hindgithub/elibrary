@@ -2,6 +2,7 @@ package com.hind.elibrary.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.hind.elibrary.dao.BookDao;
@@ -9,9 +10,11 @@ import com.hind.elibrary.dao.SimpleBookDaoImpl;
 import com.hind.elibrary.service.BookService;
 import com.hind.elibrary.service.BookServiceImpl;
 import com.hind.elibrary.webservice.rest.WsRestController;
+import com.hind.elibrary.webservice.soap.WsSoapController;
 
 @Configuration
 @EnableWebMvc
+@ImportResource("classpath:/com/hind/elibrary/webservice/soap/ws-soap-context.xml")
 public class SpringContextConfiguration {
 
 	@Bean
@@ -27,9 +30,16 @@ public class SpringContextConfiguration {
 	}
 
 	@Bean
-	public WsRestController getWsRestControler() {
+	public WsRestController getWsRestController() {
 		WsRestController wsRestController = new WsRestController();
 		wsRestController.setBookService(getBookService());
 		return wsRestController;
+	}
+
+	@Bean
+	public WsSoapController getWsSoapController() {
+		WsSoapController wsSoapController = new WsSoapController();
+		wsSoapController.setBookService(getBookService());
+		return wsSoapController;
 	}
 }

@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://hind.com/elibrary"
+	xmlns:hr="http://hind.com/hr/elibrary">
+
+	<xs:element name="BookRequest">
+	</xs:element>
+
+	<xs:element name="BookResponse">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="Book" type="hr:BookType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="BookType">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string" />
+			<xs:element name="Author" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
