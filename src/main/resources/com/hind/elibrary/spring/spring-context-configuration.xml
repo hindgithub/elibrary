@@ -12,32 +12,21 @@
 
 	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
 	
-	
     <bean class="org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter"/>
 
-    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-         <property name="mappings">
-           <props>
-             <prop key="*.wsdl">myServiceDefinition</prop>
-           </props>
-        </property> 
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="defaultHandler" ref="messageDispatcher"/>
     </bean>
-
 
     <bean id="messageDispatcher" class="org.springframework.ws.soap.server.SoapMessageDispatcher"/>
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
-     <bean id="myServiceDefinition" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
-    	<constructor-arg value="/WEB-INF/elibrary.wsdl"/>
-    </bean> 
-
 	<sws:annotation-driven />
 
-<!-- 	<sws:dynamic-wsdl id="elibrary" portTypeName="elibrary"
+ 	<sws:dynamic-wsdl id="elibrary" portTypeName="elibrary"
 		locationUri="/app/soap/" targetNamespace="http://hind.com/elibrary">
 		<sws:xsd location="classpath:com/hind/elibrary/webservice/soap/elibrary.xsd" />
-	</sws:dynamic-wsdl> -->
+	</sws:dynamic-wsdl> 
 
 </beans>

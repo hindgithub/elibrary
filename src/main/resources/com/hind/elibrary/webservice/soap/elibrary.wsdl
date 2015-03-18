@@ -1,8 +1,15 @@
-<wsdl:definitions targetNamespace="http://hind.com/elibrary">
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://hind.com/elibrary" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://hind.com/elibrary" targetNamespace="http://hind.com/elibrary">
 	<wsdl:types>
-		<xs:schema elementFormDefault="qualified" targetNamespace="http://hind.com/elibrary">
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:hr="http://hind.com/elibrary" elementFormDefault="qualified"
+			targetNamespace="http://hind.com/elibrary">
+
 			<xs:element name="BookRequest">
 			</xs:element>
+
 			<xs:element name="BookResponse">
 				<xs:complexType>
 					<xs:sequence maxOccurs="unbounded" minOccurs="0">
@@ -10,6 +17,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+
 			<xs:complexType name="BookType">
 				<xs:sequence>
 					<xs:element name="Title" type="xs:string" />
