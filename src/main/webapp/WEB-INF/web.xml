@@ -28,8 +28,8 @@
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<!-- comment DispatcherServlet and uncomment MessageDispatcherServlet for automatic soap webservice generation -->
-		<!-- <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
-		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>  
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class> -->  
 		<init-param>
 			<param-name>contextClass</param-name>
 			<param-value>
