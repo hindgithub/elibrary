@@ -1,6 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	elementFormDefault="qualified" targetNamespace="http://hind.com/elibrary"
-	xmlns:hr="http://hind.com/elibrary">
+	elementFormDefault="qualified"
+	xmlns:elibrary="http://hind.com/elibrary/webservice/soap/model"
+	targetNamespace="http://hind.com/elibrary/webservice/soap/model">
 
 	<xs:element name="BookRequest">
 	</xs:element>
@@ -8,7 +9,7 @@
 	<xs:element name="BookResponse">
 		<xs:complexType>
 			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element name="Book" type="hr:BookType" />
+				<xs:element name="Book" type="elibrary:BookType" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
