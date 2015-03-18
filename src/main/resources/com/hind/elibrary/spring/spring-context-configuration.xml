@@ -5,28 +5,13 @@
   http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<bean
-		class="org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter" >
-		<property name="messageFactory" ref="messageFactory"/>
-	</bean>	
-
-	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
-	
-    <bean class="org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter"/>
-
-    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
-        <property name="defaultHandler" ref="messageDispatcher"/>
-    </bean>
-
-    <bean id="messageDispatcher" class="org.springframework.ws.soap.server.SoapMessageDispatcher"/>
-
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
-
 	<sws:annotation-driven />
 
+	<!-- configuration for dynamic generation of soap webservice wsdl -->
  	<sws:dynamic-wsdl id="elibrary" portTypeName="elibrary"
 		locationUri="/app/soap/" targetNamespace="http://hind.com/elibrary">
 		<sws:xsd location="classpath:com/hind/elibrary/webservice/soap/elibrary.xsd" />
 	</sws:dynamic-wsdl> 
+	<!-- end configuration for dynamic generation of soap webservice wsdl -->
 
 </beans>

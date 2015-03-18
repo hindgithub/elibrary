@@ -27,6 +27,7 @@
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
+		<!-- comment DispatcherServlet and uncomment MessageDispatcherServlet for automatic soap webservice generation -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<!-- <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class> --> 
 		<init-param>
@@ -39,10 +40,12 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>org.springframework.web.context.ContextLoaderListener</param-value>
 		</init-param>
+		<!-- configuration for automatic generation of soap webservice wsdl -->
 		<init-param>
 			<param-name>transformWsdlLocations</param-name>
 			<param-value>true</param-value>
 		</init-param>
+		<!-- end configuration for automatic generation of soap webservice wsdl -->
 	</servlet>
 
 	<servlet-mapping>

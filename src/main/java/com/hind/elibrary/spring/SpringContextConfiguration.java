@@ -4,6 +4,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
+import org.springframework.ws.soap.server.SoapMessageDispatcher;
+import org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter;
+import org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter;
 
 import com.hind.elibrary.dao.BookDao;
 import com.hind.elibrary.dao.SimpleBookDaoImpl;
@@ -42,4 +48,40 @@ public class SpringContextConfiguration {
 		wsSoapController.setBookService(getBookService());
 		return wsSoapController;
 	}
+
+	/*configuration for serving soap webservices by DispatcherServlet*/
+	@Bean
+	public SaajSoapMessageFactory getSoapMessageFactory() {
+		return new SaajSoapMessageFactory();
+	}
+
+	@Bean
+	public WebServiceMessageReceiverHandlerAdapter getWebServiceMessageReceiverHandlerAdapter() {
+		WebServiceMessageReceiverHandlerAdapter bean = new WebServiceMessageReceiverHandlerAdapter();
+		bean.setMessageFactory(getSoapMessageFactory());
+		return bean;
+	}
+
+	@Bean
+	public WsdlDefinitionHandlerAdapter getWsdlDefinitionHandlerAdapter() {
+		return new WsdlDefinitionHandlerAdapter();
+	}
+
+	@Bean
+	public RequestMappingHandlerAdapter getRequestMappingHandlerAdapter() {
+		return new RequestMappingHandlerAdapter();
+	}
+
+	@Bean
+	public SoapMessageDispatcher getSoapMessageDispatcher() {
+		return new SoapMessageDispatcher();
+	}
+
+	@Bean
+	public SimpleUrlHandlerMapping getSimpleUrlHandlerMapping() {
+		SimpleUrlHandlerMapping bean = new SimpleUrlHandlerMapping();
+		bean.setDefaultHandler(getSoapMessageDispatcher());
+		return bean;
+	}
+	/*end configuration for serving soap webservices by DispatcherServlet*/
 }
