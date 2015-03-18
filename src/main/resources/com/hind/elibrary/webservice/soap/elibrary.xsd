@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified" targetNamespace="http://hind.com/elibrary"
-	xmlns:hr="http://hind.com/hr/elibrary">
+	xmlns:hr="http://hind.com/elibrary">
 
 	<xs:element name="BookRequest">
 	</xs:element>

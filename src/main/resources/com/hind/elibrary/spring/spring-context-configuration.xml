@@ -9,7 +9,7 @@
 
 <sws:dynamic-wsdl id="elibrary"                                                                                         
     portTypeName="elibrary"                                                                                       
-    locationUri="/soap/"                                                                                     
+    locationUri="/app/soap/"                                                                                     
     targetNamespace="http://hind.com/elibrary">                                                             
   <sws:xsd location="classpath:com/hind/elibrary/webservice/soap/elibrary.xsd"/>                                                                                
 </sws:dynamic-wsdl>

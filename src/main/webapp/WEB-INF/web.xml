@@ -27,7 +27,8 @@
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
+		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextClass</param-name>
 			<param-value>
