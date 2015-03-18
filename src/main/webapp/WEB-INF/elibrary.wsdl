@@ -1,0 +1,55 @@
+<wsdl:definitions targetNamespace="http://hind.com/elibrary">
+	<wsdl:types>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://hind.com/elibrary">
+			<xs:element name="BookRequest">
+			</xs:element>
+			<xs:element name="BookResponse">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded" minOccurs="0">
+						<xs:element name="Book" type="hr:BookType" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="BookType">
+				<xs:sequence>
+					<xs:element name="Title" type="xs:string" />
+					<xs:element name="Author" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="BookRequest">
+		<wsdl:part element="tns:BookRequest" name="BookRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="BookResponse">
+		<wsdl:part element="tns:BookResponse" name="BookResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="elibrary">
+		<wsdl:operation name="Book">
+			<wsdl:input message="tns:BookRequest" name="BookRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:BookResponse" name="BookResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="elibrarySoap11" type="tns:elibrary">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Book">
+			<soap:operation soapAction="" />
+			<wsdl:input name="BookRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="BookResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="elibraryService">
+		<wsdl:port binding="tns:elibrarySoap11" name="elibrarySoap11">
+			<soap:address location="http://localhost:8080/elibrary/app/soap/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
