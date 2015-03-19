@@ -3,6 +3,9 @@
 Publiczna strona:
 http://localhost:8080/elibrary
 
+Konsola administracyjna:
+http://localhost:8080/elibrary/app/admin/adminDefault.xhtml
+
 RESTowy interfejs:
 http://localhost:8080/elibrary/app/rest/book
 

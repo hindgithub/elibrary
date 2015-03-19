@@ -27,9 +27,10 @@
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<!-- comment DispatcherServlet and uncomment MessageDispatcherServlet for automatic soap webservice generation -->
+		<!-- comment DispatcherServlet and uncomment MessageDispatcherServlet for 
+			automatic soap webservice generation -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!-- <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class> -->  
+		<!-- <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class> -->
 		<init-param>
 			<param-name>contextClass</param-name>
 			<param-value>
@@ -53,6 +54,15 @@
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
 
-
+	<!-- JSF config -->
+	<servlet>
+		<servlet-name>facesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>/app/admin/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>

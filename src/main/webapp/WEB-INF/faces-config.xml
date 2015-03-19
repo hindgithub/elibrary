@@ -4,11 +4,19 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
 	version="2.1">
- 
+
 	<application>
-		<el-resolver>
-    		    org.springframework.web.jsf.el.SpringBeanFacesELResolver
-		</el-resolver>
-  	</application>
- 
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+
+	<managed-bean>
+		<managed-bean-name>bookBean</managed-bean-name>
+		<managed-bean-class>com.hind.elibrary.web.admin.bean.BookBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>bookService</property-name>
+			<value>#{bookService}</value>
+		</managed-property>
+	</managed-bean>
+
 </faces-config>
