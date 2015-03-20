@@ -28,7 +28,7 @@ public class SpringContextConfiguration {
 		return new SimpleBookDaoImpl();
 	}
 
-	@Bean
+	@Bean(name = { "bookService" })
 	public BookService getBookService() {
 		BookServiceImpl bookService = new BookServiceImpl();
 		bookService.setBookDao(getBookDao());
