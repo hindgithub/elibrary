@@ -12,3 +12,9 @@ http://localhost:8080/elibrary/app/rest/book
 SOAPowy interfejs (by wygenerowac wsdl nalezy w web.xml odkomentowac MessageDispatcherServlet i zakomentowac DispatcherServlet i zdeplojowac aplikacje, 
 ostatnio wygenerowany wsdl jest przechowywany w pliku elibrary.wsdl):
 http://localhost:8080/elibrary/app/soap/elibrary.wsdl
+
+Do Git Ignore dodac:
+.project
+.settings
+target
+src/main/java/com/hind/elibrary/webservice/soap/model/*
