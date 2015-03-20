@@ -18,7 +18,7 @@ public class SimpleBookDaoImpl implements BookDao {
 		books.add(book);
 
 		book = new Book();
-		book.setAuthor("Władysław reymont");
+		book.setAuthor("Władysław Reymont");
 		book.setTitle("Ziemia obiecana");
 		books.add(book);
 	}
