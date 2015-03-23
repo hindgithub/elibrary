@@ -8,10 +8,22 @@
 	<sws:annotation-driven />
 
 	<!-- configuration for dynamic generation of soap webservice wsdl -->
- 	<sws:dynamic-wsdl id="elibrary" portTypeName="elibrary"
+	<sws:dynamic-wsdl id="elibrary" portTypeName="elibrary"
 		locationUri="/app/soap/" targetNamespace="http://hind.com/elibrary/webservice/soap/model">
 		<sws:xsd location="classpath:com/hind/elibrary/webservice/soap/elibrary.xsd" />
-	</sws:dynamic-wsdl> 
+	</sws:dynamic-wsdl>
 	<!-- end configuration for dynamic generation of soap webservice wsdl -->
+
+	<!-- configuration for sql database in memory -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:mydb" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+		<property name="initialSize" value="5" />
+		<property name="maxActive" value="10" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxOpenPreparedStatements" value="10" />
+	</bean>
 
 </beans>
