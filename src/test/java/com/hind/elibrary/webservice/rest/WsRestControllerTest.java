@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,9 +48,10 @@ public class WsRestControllerTest {
 
 		//then
 		Mockito.verify(bookServiceMock, Mockito.times(1)).getAllBooks();
-		Assert.assertEquals(1, booksResult.size());
-		Book bookResult = (Book) booksResult.toArray()[0];
-		Assert.assertEquals(AUTHOR, bookResult.getAuthor());
-		Assert.assertEquals(TITLE, bookResult.getTitle());
+		Assert.assertThat(booksResult, Matchers.allOf(Matchers.notNullValue(), Matchers.hasSize(1)));
+		Assert.assertThat(
+				booksResult,
+				Matchers.contains(Matchers.allOf(Matchers.hasProperty("author", Matchers.equalTo(AUTHOR)),
+						Matchers.hasProperty("title", Matchers.equalTo(TITLE)))));
 	}
 }
