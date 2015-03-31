@@ -3,6 +3,7 @@ package com.hind.elibrary.service;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,9 +48,10 @@ public class BookServiceImplTest {
 
 		//then
 		Mockito.verify(bookDaoMock, Mockito.times(1)).getAll();
-		Assert.assertEquals(1, resultBooks.size());
-		Book resultBook = (Book) resultBooks.toArray()[0];
-		Assert.assertEquals(AUTHOR, resultBook.getAuthor());
-		Assert.assertEquals(TITLE, resultBook.getTitle());
+		Assert.assertThat(resultBooks, Matchers.allOf(Matchers.notNullValue(), Matchers.hasSize(1)));
+		Assert.assertThat(
+				resultBooks,
+				Matchers.contains(Matchers.allOf(Matchers.hasProperty("author", Matchers.equalTo(AUTHOR)),
+						Matchers.hasProperty("title", Matchers.equalTo(TITLE)))));
 	}
 }
