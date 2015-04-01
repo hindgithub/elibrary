@@ -8,9 +8,11 @@ import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.hind.elibrary.model.Book;
 
+@Repository
 public class BookDaoImpl implements BookDao {
 
 	private Logger log = LoggerFactory.getLogger(BookDaoImpl.class);

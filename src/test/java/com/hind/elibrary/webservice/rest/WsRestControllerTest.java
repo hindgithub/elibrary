@@ -35,8 +35,7 @@ public class WsRestControllerTest {
 		bookServiceMock = Mockito.mock(BookService.class);
 		Mockito.when(bookServiceMock.getAllBooks()).thenReturn(books);
 
-		wsRestController = new WsRestController();
-		wsRestController.setBookService(bookServiceMock);
+		wsRestController = new WsRestController(bookServiceMock);
 	}
 
 	@Test

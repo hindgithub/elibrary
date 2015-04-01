@@ -34,8 +34,7 @@ public class BookServiceImplTest {
 		bookDaoMock = Mockito.mock(BookDao.class);
 		Mockito.when(bookDaoMock.getAll()).thenReturn(books);
 
-		bookService = new BookServiceImpl();
-		bookService.setBookDao(bookDaoMock);
+		bookService = new BookServiceImpl(bookDaoMock);
 
 	}
 

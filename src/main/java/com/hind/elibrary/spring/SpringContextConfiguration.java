@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -19,47 +20,15 @@ import org.springframework.ws.soap.server.SoapMessageDispatcher;
 import org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter;
 import org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter;
 
-import com.hind.elibrary.dao.BookDao;
-import com.hind.elibrary.dao.BookDaoImpl;
-import com.hind.elibrary.service.BookService;
-import com.hind.elibrary.service.BookServiceImpl;
-import com.hind.elibrary.webservice.rest.WsRestController;
-import com.hind.elibrary.webservice.soap.WsSoapController;
-
 @Configuration
 @EnableWebMvc
 @ImportResource("classpath:/com/hind/elibrary/spring/spring-context-configuration.xml")
+@ComponentScan(basePackages = { "com.hind.elibrary.dao", "com.hind.elibrary.service", "com.hind.elibrary.webservice.rest",
+		"com.hind.elibrary.webservice.soap" })
 public class SpringContextConfiguration {
 
 	@Autowired
 	private DataSource dataSource;
-
-	@Bean
-	public BookDao getBookDao() {
-		BookDaoImpl bookDao = new BookDaoImpl();
-		return bookDao;
-	}
-
-	@Bean(name = { "bookService" })
-	public BookService getBookService() {
-		BookServiceImpl bookService = new BookServiceImpl();
-		bookService.setBookDao(getBookDao());
-		return bookService;
-	}
-
-	@Bean
-	public WsRestController getWsRestController() {
-		WsRestController wsRestController = new WsRestController();
-		wsRestController.setBookService(getBookService());
-		return wsRestController;
-	}
-
-	@Bean
-	public WsSoapController getWsSoapController() {
-		WsSoapController wsSoapController = new WsSoapController();
-		wsSoapController.setBookService(getBookService());
-		return wsSoapController;
-	}
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {

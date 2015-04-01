@@ -3,6 +3,7 @@ package com.hind.elibrary.webservice.soap;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
@@ -19,6 +20,11 @@ public class WsSoapController {
 
 	private BookService bookService;
 
+	@Autowired
+	public WsSoapController(BookService bookService) {
+		this.bookService = bookService;
+	}
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "BookRequest")
 	@ResponsePayload
 	public BookResponse handleBookRequest() {
@@ -33,14 +39,6 @@ public class WsSoapController {
 		BookResponse response = new BookResponse();
 		response.getBook().addAll(resultBooks);
 		return response;
-	}
-
-	public BookService getBookService() {
-		return bookService;
-	}
-
-	public void setBookService(BookService bookService) {
-		this.bookService = bookService;
 	}
 
 }
