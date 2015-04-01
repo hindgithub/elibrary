@@ -1,6 +1,7 @@
 package com.hind.elibrary.service;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,12 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Collection<Book> getAllBooks() {
-		return bookDao.getAll();
+		Collection<Book> result = new LinkedList<Book>();
+		Collection<Book> booksFromDao = bookDao.getAll();
+		if (booksFromDao != null) {
+			result.addAll(booksFromDao);
+		}
+		return result;
 	}
 
 }
