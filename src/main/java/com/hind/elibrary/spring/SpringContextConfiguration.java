@@ -20,11 +20,17 @@ import org.springframework.ws.soap.server.SoapMessageDispatcher;
 import org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter;
 import org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter;
 
+import com.hind.elibrary.dao.ComponentScanMarker4Daos;
+import com.hind.elibrary.service.ComponentScanMarker4Services;
+import com.hind.elibrary.webservice.rest.WsRestController;
+import com.hind.elibrary.webservice.soap.WsSoapController;
+
 @Configuration
 @EnableWebMvc
 @ImportResource("classpath:/com/hind/elibrary/spring/spring-context-configuration.xml")
-@ComponentScan(basePackages = { "com.hind.elibrary.dao", "com.hind.elibrary.service", "com.hind.elibrary.webservice.rest",
-		"com.hind.elibrary.webservice.soap" })
+@ComponentScan(basePackageClasses = { ComponentScanMarker4Daos.class,
+		ComponentScanMarker4Services.class, WsRestController.class,
+		WsSoapController.class})
 public class SpringContextConfiguration {
 
 	@Autowired
@@ -43,12 +49,13 @@ public class SpringContextConfiguration {
 
 	private Properties getJpaProperties() {
 		Properties properties = new Properties();
-		//		properties.setProperty("hibernate.hbm2ddl.auto", "validate");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+		// properties.setProperty("hibernate.hbm2ddl.auto", "validate");
+		properties.setProperty("hibernate.dialect",
+				"org.hibernate.dialect.HSQLDialect");
 		return properties;
 	}
 
-	/*configuration for serving soap webservices by DispatcherServlet*/
+	/* configuration for serving soap webservices by DispatcherServlet */
 	@Bean
 	public SaajSoapMessageFactory getSoapMessageFactory() {
 		return new SaajSoapMessageFactory();
@@ -82,5 +89,5 @@ public class SpringContextConfiguration {
 		bean.setDefaultHandler(getSoapMessageDispatcher());
 		return bean;
 	}
-	/*end configuration for serving soap webservices by DispatcherServlet*/
+	/* end configuration for serving soap webservices by DispatcherServlet */
 }

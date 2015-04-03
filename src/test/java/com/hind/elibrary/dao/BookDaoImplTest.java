@@ -18,7 +18,7 @@ public class BookDaoImplTest {
 
 	@Test
 	public void test() {
-		Assert.assertNull(dataSource);
+		Assert.assertNotNull(dataSource);
 	}
 
 }
