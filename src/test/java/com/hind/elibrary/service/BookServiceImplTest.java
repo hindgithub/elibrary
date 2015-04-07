@@ -34,6 +34,7 @@ public class BookServiceImplTest {
 
 		//then
 		Mockito.verify(bookDaoMock, Mockito.times(1)).getAll();
+		Mockito.verifyNoMoreInteractions(bookDaoMock);
 		Assert.assertThat(resultCollection, Matchers.allOf(Matchers.notNullValue(), Matchers.hasSize(0)));
 	}
 
@@ -47,6 +48,7 @@ public class BookServiceImplTest {
 
 		//then
 		Mockito.verify(bookDaoMock, Mockito.times(1)).getAll();
+		Mockito.verifyNoMoreInteractions(bookDaoMock);
 		Assert.assertThat(resultCollection, Matchers.allOf(Matchers.notNullValue(), Matchers.hasSize(0)));
 	}
 
@@ -63,6 +65,7 @@ public class BookServiceImplTest {
 
 		//then
 		Mockito.verify(bookDaoMock, Mockito.times(1)).getAll();
+		Mockito.verifyNoMoreInteractions(bookDaoMock);
 		Assert.assertThat(resultBooks, Matchers.allOf(Matchers.notNullValue(), Matchers.hasSize(1)));
 		Assert.assertThat(
 				resultBooks,
@@ -82,6 +85,7 @@ public class BookServiceImplTest {
 
 		//then
 		Mockito.verify(bookDaoMock, Mockito.times(1)).get(Mockito.eq(1l));
+		Mockito.verifyNoMoreInteractions(bookDaoMock);
 		Assert.assertThat(resultBook, Matchers.allOf(
 				Matchers.notNullValue(),
 				Matchers.hasProperty("id", Matchers.equalTo(1l))
@@ -98,6 +102,7 @@ public class BookServiceImplTest {
 
 		//then
 		Mockito.verify(bookDaoMock, Mockito.times(1)).get(Mockito.eq(1l));
+		Mockito.verifyNoMoreInteractions(bookDaoMock);
 		Assert.assertNull(resultBook);
 	}
 }
