@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.hind.elibrary.dao.test.SpringContextConfiguration4TestDao;
 import com.hind.elibrary.model.Book;
-import com.hind.elibrary.test.dao.SpringContextConfiguration4TestDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringContextConfiguration4TestDao.class })

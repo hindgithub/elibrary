@@ -1,4 +1,4 @@
-package com.hind.elibrary.test.dao;
+package com.hind.elibrary.dao.test;
 
 import java.util.Properties;
 
@@ -15,7 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import com.hind.elibrary.dao.ComponentScanMarker4Daos;
 
 @Configuration
-@ImportResource("classpath:/com/hind/elibrary/test/dao/spring-context-configuration-4-test-dao.xml")
+@ImportResource("classpath:/com/hind/elibrary/dao/test/spring-context-configuration-4-test-dao.xml")
 @ComponentScan(basePackageClasses = { ComponentScanMarker4Daos.class })
 public class SpringContextConfiguration4TestDao {
 
