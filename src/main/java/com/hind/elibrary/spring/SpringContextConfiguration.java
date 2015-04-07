@@ -32,6 +32,7 @@ import com.hind.elibrary.webservice.soap.WsSoapController;
 		WsSoapController.class})
 public class SpringContextConfiguration {
 
+	/* configuration for JPA */
 	@Bean
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
