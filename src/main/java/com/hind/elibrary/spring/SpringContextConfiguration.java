@@ -4,7 +4,6 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -33,11 +32,8 @@ import com.hind.elibrary.webservice.soap.WsSoapController;
 		WsSoapController.class})
 public class SpringContextConfiguration {
 
-	@Autowired
-	private DataSource dataSource;
-
 	@Bean
-	public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
+	public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
 		em.setPackagesToScan(new String[] { "com.hind.elibrary.model" });
