@@ -6,6 +6,8 @@ import com.hind.elibrary.model.Book;
 
 public interface BookDao {
 
-	public Collection<Book> getAll();
+	Collection<Book> getAll();
+
+	Book get(Long id);
 
 }

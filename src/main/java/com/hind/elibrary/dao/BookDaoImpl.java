@@ -22,18 +22,15 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public Collection<Book> getAll() {
-		log.info("!!!!!!!!!!!!! GetAll()");
 		Query query = entityManager.createQuery("SELECT b FROM Book b");
 		Collection<Book> result = query.getResultList();
 		return result;
 	}
 
-	public EntityManager getEntityManager() {
-		return entityManager;
-	}
-
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
+	@Override
+	public Book get(Long id) {
+		Book result = entityManager.find(Book.class, id);
+		return result;
 	}
 
 }

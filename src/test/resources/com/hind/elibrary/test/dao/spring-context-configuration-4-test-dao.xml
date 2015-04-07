@@ -10,6 +10,7 @@
 	<!-- create in memory database, schema and test data -->
 	<jdbc:embedded-database id="dataSource" type="HSQL">
 		<jdbc:script location="classpath:com/hind/elibrary/database/db-schema.sql" />
+		<jdbc:script location="classpath:com/hind/elibrary/test/dao/db-data-4-test-dao.sql" />
 	</jdbc:embedded-database>
 
 </beans>
