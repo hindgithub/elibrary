@@ -25,7 +25,7 @@ public class BookServiceImplTest {
 	}
 
 	@Test
-	public void shouldGetAllBooksReturnEmptyCollectionWhenDaoReturnNull() {
+	public void shouldGetAllBooksMethodReturnEmptyCollectionWhenDaoReturnNull() {
 		//given
 		Mockito.when(bookDaoMock.getAll()).thenReturn(null);
 
@@ -38,7 +38,7 @@ public class BookServiceImplTest {
 	}
 
 	@Test
-	public void shouldGetAllBooksReturnEmptyCollectionWhenDaoReturnEmptyCollecyion() {
+	public void shouldGetAllBooksMethodReturnEmptyCollectionWhenDaoReturnEmptyCollection() {
 		//given
 		Mockito.when(bookDaoMock.getAll()).thenReturn(new LinkedList<Book>());
 
@@ -51,7 +51,7 @@ public class BookServiceImplTest {
 	}
 
 	@Test
-	public void shouldCallBookDaoToGetAllBooks() {
+	public void shouldGetAllBooksMethodReturnAllBooksReturnedByDao() {
 		//given
 		Book b1 = new Book();
 		b1.setAuthor("author");
@@ -70,4 +70,34 @@ public class BookServiceImplTest {
 						Matchers.hasProperty("title", Matchers.equalTo("title")))));
 	}
 
+	@Test
+	public void shouldGetBookMethodRetrunBookWhenDaoReturnBook() {
+		//given
+		Book b1 = new Book();
+		b1.setId(1L);
+		Mockito.when(bookDaoMock.get(Mockito.eq(1L))).thenReturn(b1);
+
+		//when
+		Book resultBook = bookService.getBook(1L);
+
+		//then
+		Mockito.verify(bookDaoMock, Mockito.times(1)).get(Mockito.eq(1l));
+		Assert.assertThat(resultBook, Matchers.allOf(
+				Matchers.notNullValue(),
+				Matchers.hasProperty("id", Matchers.equalTo(1l))
+				));
+	}
+
+	@Test
+	public void shouldGetBookMethodReturnNullWhenDaoReturnNull() {
+		//given
+		Mockito.when(bookDaoMock.get(1l)).thenReturn(null);
+
+		//when
+		Book resultBook = bookDaoMock.get(1l);
+
+		//then
+		Mockito.verify(bookDaoMock, Mockito.times(1)).get(Mockito.eq(1l));
+		Assert.assertNull(resultBook);
+	}
 }

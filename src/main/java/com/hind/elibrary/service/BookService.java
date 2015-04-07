@@ -8,4 +8,6 @@ public interface BookService {
 
 	Collection<Book> getAllBooks();
 
+	Book getBook(Long id);
+
 }
