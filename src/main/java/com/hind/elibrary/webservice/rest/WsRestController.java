@@ -24,13 +24,13 @@ public class WsRestController {
 	}
 
 	@RequestMapping("/book")
-	public Collection<Book> getAllBooks() {
-		return bookService.getAllBooks();
+	public Collection<BookDTO> getAllBooks() {
+		return convert(bookService.getAllBooks());
 	}
 
 	@RequestMapping("/book/{id}")
-	public Book getBook(@PathVariable Long id) {
-		return bookService.getBook(id);
+	public BookDTO getBook(@PathVariable Long id) {
+		return convert(bookService.getBook(id));
 	}
 
 	private BookDTO convert(Book book) {
