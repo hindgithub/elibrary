@@ -26,7 +26,7 @@ public class BookDaoImplTest {
 	private BookDao bookDao;
 
 	@Test
-	public void shouldReturnAllBooks() {
+	public void shouldGetAllMethodReturnAllBooks() {
 		//given
 
 		//when
@@ -42,7 +42,7 @@ public class BookDaoImplTest {
 	}
 
 	@Test
-	public void shouldReturnBooksWhenGiveExistingId() {
+	public void shouldGetMethodReturnBooksWhenGiveExistingId() {
 		//given
 
 		//when
@@ -57,7 +57,7 @@ public class BookDaoImplTest {
 	}
 
 	@Test
-	public void shouldNotReturnBooksWhenGivenNotExistingId() {
+	public void shouldGetMethodNotReturnBooksWhenGivenNotExistingId() {
 		//given
 		Long notExistId = -1l;
 
