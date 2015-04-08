@@ -65,4 +65,19 @@ public class WsRestControllerTest {
 		
 		result.andExpect(MockMvcResultMatchers.status().isOk());
 	}
+
+	@Test
+	public void shouldGetMethodReturnNullWhenGivenNotExistingId() throws Exception {
+		//given
+		Mockito.when(bookServiceMock.getBook(Mockito.anyLong())).thenReturn(null);
+
+		//when
+		ResultActions result = mockMvc.perform(MockMvcRequestBuilders.get("/rest/book/-1"));
+
+		//then
+		Mockito.verify(bookServiceMock, Mockito.times(1)).getBook(Mockito.eq(-1l));
+		Mockito.verifyNoMoreInteractions(bookServiceMock);
+
+		result.andExpect(MockMvcResultMatchers.status().isOk());
+	}
 }
